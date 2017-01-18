@@ -105,6 +105,42 @@ void PrintMainMenu() {
 }
 
 /*
+ * Function:    PrintArray
+ * Input:       None
+ * Output:      None
+ * Purpose:     Print the current array of elements
+ */
+void PrintArray(){
+}
+
+/*
+ * Function:    AppendElement
+ * Input:       None
+ * Output:      None
+ * Purpose:     Append a new element to the end of the array
+ */
+void AppendElement(){
+}
+
+/*
+ * Function:    RemoveLastElement
+ * Input:       None
+ * Output:      None
+ * Purpose:     Remove the last element in the array
+ */
+void RemoveLastElement(){
+}
+
+/*
+ * Function:    InsertElement
+ * Input:       None
+ * Output:      None
+ * Purpose:     Insert an element in the array at a specified index
+ */
+void InsertElement(){
+}
+
+/*
  * Function:    Main
  * Input:       None
  * Output:      None
