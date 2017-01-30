@@ -1,0 +1,56 @@
+bash-4.3$ gdb person
+GNU gdb (GDB) Fedora 7.9-11.fc22
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from person...done.
+(gdb) start
+Temporary breakpoint 1 at 0x400b8d: file person.cpp, line 16.
+Starting program: /home/mspring/Documents/course/eece2160git/labs/lab02/person 
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.21-13.fc22.x86_64
+
+Temporary breakpoint 1, main () at person.cpp:16
+16	    Person person;
+Missing separate debuginfos, use: dnf debuginfo-install libgcc-5.3.1-6.fc22.x86_64 libstdc++-5.3.1-6.fc22.x86_64
+(gdb) next
+17	    person.name = "John";
+(gdb) print &person
+$1 = (Person *) 0x7fffffffe360
+(gdb) next
+18	    person.age = 10;
+(gdb) print &person.age
+$2 = (int *) 0x7fffffffe368
+(gdb) next
+19	    PrintPerson(&person);
+(gdb) step
+PrintPerson (person=0x7fffffffe360) at person.cpp:12
+12	    cout << person->name << " is " << person->age << " years old" << endl;
+(gdb) next
+John is 10 years old
+13	}
+(gdb) next
+main () at person.cpp:16
+16	    Person person;
+(gdb) next
+20	}
+(gdb) next
+0x00007ffff719a700 in __libc_start_main () from /lib64/libc.so.6
+(gdb) next
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 5757) exited normally]
+(gdb) next
+The program is not being run.
+(gdb) quit
+bash-4.3$ 
+
