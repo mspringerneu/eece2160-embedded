@@ -42,6 +42,14 @@ const int gpio_pbtnu_offset = 0x174;  // Offset for up push button
 const int gpio_pbtnd_offset = 0x178;  // Offset for down push button 
 const int gpio_pbtnc_offset = 0x17C;  // Offset for center push button 
 
+struct PushButtonConfig {
+       int left;
+       int right;
+       int up;
+       int down;
+       int center;
+};
+
 /** 
  * Write a 4-byte value at the specified general-purpose I/O location. 
  * 
@@ -157,7 +165,7 @@ void WriteAllLeds(char *pBase, int numVal) {
 
 /** Reads all the switches and returns their value in a single integer. 
  * 
- * @param pBase Base address for general-purpose I/O 
+ * @param  pBase Base address for general-purpose I/O 
  * @return A value that represents the value of the switches 
  */ 
  int ReadAllSwitches(char *pBase) {
@@ -169,16 +177,68 @@ void WriteAllLeds(char *pBase, int numVal) {
          sum += place * Read1Switch(pBase, i);
      }
      cout << "The integer representation of the current switch configuration is: " << sum << endl;
+     return sum;
 }
 
-/** Turns off all LEDs
+/** Reads the value of a push button
  * - Uses base address of I/O
- * @param	pBase base address of I/O
+ * @param	 pBase      base address of I/O
+ * @param	 buttonNum 	push button number (0 to 4)
+ *                    0 - left
+ *                    1 - right
+ *                    2 - up
+ *                    3 - down
+ *                    4 - center
+ * @return            button value read
 */
-void TurnOffLEDs(char *pBase) {
-     for (int i = 0; i < 8; i++) {
-         Write1Led(pBase, i, 0);
+int Read1Button(char *pBase, int buttonNum) {
+	int buttonOffset = 0x16C + (buttonNum * 0x004);
+	return RegisterRead(pBase, buttonOffset);
+}
+
+/** Reads the current button configuration and modifies the given counter if any are pressed. 
+ * 
+ * @param  pBase Base address for general-purpose I/O
+ * @param  config the current button state configuration
+ * @param  counter the integer to adjust
+ */ 
+void PushButtonGet(char *pBase, PushButtonConfig * config, int *counter) {
+     int left, right, up, down, center, currentNum;
+     left = Read1Button(pBase, 0);
+     right = Read1Button(pBase, 1);
+     up = Read1Button(pBase, 2);
+     down = Read1Button(pBase, 3);
+     center = Read1Button(pBase, 4);
+     currentNum = *counter;
+     
+     if (config->left == 0 && left == 1) {
+        *counter = min(255, currentNum << 1);
+        cout << "The current value of the counter is: " << *counter << endl;
      }
+     config->left = left;
+     
+     if (config->right == 0 && right == 1) {
+        *counter = max(0, currentNum >> 1);
+        cout << "The current value of the counter is: " << *counter << endl;
+     }
+     config->right = right;
+     
+     if (config->up == 0 && up == 1) {
+        *counter = min(255, currentNum + 1);
+        cout << "The current value of the counter is: " << *counter << endl;
+     }
+     config->up = up;
+     
+     if (config->down == 0 && down == 1) {
+        *counter = max(0, currentNum - 1);
+        cout << "The current value of the counter is: " << *counter << endl;
+     }
+     config->down = down;
+     if (config->center == 0 && center == 1) {
+        *counter = ReadAllSwitches(pBase);
+        cout << "The current value of the counter is: " << *counter << endl;
+     }
+     config->center = center;
 }
 
 /** 
@@ -187,7 +247,7 @@ void TurnOffLEDs(char *pBase) {
 int main() 
 { 
 	// Initialize 
-	int fd; 
+	int fd;
 	char *pBase = Initialize(&fd); 
 
 	// Check error 
@@ -198,21 +258,19 @@ int main()
 	}	 
 	 
 	// ************** Put your code here **********************
-	int ledNum, state, switchNum, binaryNum, exitNum;
-  cout << "Please enter an LED number between 0-7: ";
-  cin >> ledNum;
-  cout << "Please enter a state for LED #" << ledNum << " (0 or 1): ";
-  cin >> state;
-  Write1Led(pBase, ledNum, state);
-  cout << "Please enter a switch number between 0-7: ";
-  cin >> switchNum;
-  cout << "The value of switch #" << switchNum << " is: " << Read1Switch(pBase, switchNum) << endl;
-  cout << "Please enter an integer between 0-255: ";
-  cin >> binaryNum;
-  WriteAllLeds(pBase, binaryNum);
-  ReadAllSwitches(pBase);
-	// Done 
-  // WriteAllLeds(pBase, 0);	
+  int * counter = new int;
+  *counter = ReadAllSwitches(pBase);
+  PushButtonConfig * pbConfig = new PushButtonConfig;
+  pbConfig->left = 0;
+  pbConfig->right = 0;
+  pbConfig->up = 0;
+  pbConfig->down = 0;
+  pbConfig->center = 0;
+  cout << "The current value of the counter is: " << *counter << endl;
+  while (true) {
+        PushButtonGet(pBase, pbConfig, counter);
+        WriteAllLeds(pBase, *counter);
+  }	
 	Finalize(pBase, fd);
  
   return 0;
