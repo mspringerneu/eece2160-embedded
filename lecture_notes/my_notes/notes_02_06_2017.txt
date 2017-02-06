@@ -1,0 +1,103 @@
+/*
+ *	File: 	Lecture Notes
+ *	Author:	Matthew Springer
+ *	Date:	February 6, 2017
+ *	Topic:	Header Files
+ */
+
+/*
+ *	HEADER FILES CONTAIN:
+ *	
+ *	Constants:
+ *
+ *		static const double PI = 3.14159
+ *	
+ *	Macros:
+ *
+ *		#define PI 3.14159
+ *		#define REMAINDER(X, Y) ((X) % (Y))
+ *	
+ *	Function Prototypes:
+ *
+ *		void printMyStack();
+ *	
+ *	Struct Definitions
+ *
+ *	System-wide Global Variables
+ */
+ 
+/*
+ *	EXAMPLE HEADER FILE:
+ *	
+ *	#ifndef MATHFILE_H
+ *	#define MATHFILE_H
+ *	
+ *	// HEADER FILE CONTENTS //
+ *	
+ *	#endif
+ */
+
+/*
+ *	MAKEFILE:
+ *
+ *	Components:
+ *		Comments - #
+ *		Rules
+ *		Dependency Lines
+ *		Shell Lines
+ *		Macros
+ *	
+ *	<target>: <dependency>
+ *		<buildCommand>
+ */
+ 
+/*
+ *	EXAMPLE MAKEFILE (SIMPLE):
+ *	
+ *	# Comments
+ *
+ *	homework2: homework2.cpp
+ *		g++ homework2.cpp -o homework2
+ *
+ *	clean:
+ *		rm -r homework2
+ */
+
+/*
+ *	EXAMPLE MAKEFILE (INTERMEDIATE):
+ *	
+ *	math1: mathMain.o mathfile.o
+ *		g++ mathMain.o mathfile.o -o math1 	
+ *
+ *	mathMain.o: mathMain.cpp mathfile.h
+ *		g++ -g -Wall -c mathMain.cpp
+ *
+ *	mathfile.o: mathfile.cpp mathfile.h
+ *		g++ -g -Wall -c mathfile.cpp
+ *
+ *	clean:
+ *		rm mathMain.o mathfile.o math1
+ *
+ */
+ 
+/*
+ *	EXAMPLE MAKEFILE (INTERMEDIATE USING VARIABLES):
+ *
+ *	GCC = g++
+ *	CFLAGS = -g -Wall			// -g = debug, -Wall = warnings(all)
+ *	OBJS = mathMain.o mathfile.o
+ *
+ *	math1: $(OBJS)
+ *		$(GCC) $(OBJS) -o math1 	
+ *
+ *	mathMain.o: mathMain.cpp mathfile.h
+ *		$(GCC) $(CFLAGS) -c mathMain.cpp
+ *
+ *	mathfile.o: mathfile.cpp mathfile.h
+ *		$(GCC) $(CFLAGS) -c mathfile.cpp
+ *
+ *	clean:
+ *		rm $(OBJS) math1
+ *
+ */
+ 
