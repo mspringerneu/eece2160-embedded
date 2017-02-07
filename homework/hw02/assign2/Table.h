@@ -1,6 +1,8 @@
 #ifndef TABLE_H
 #define TABLE_H
 
+#include <string>
+
 #include "Furniture.h"
 
 /*
@@ -19,12 +21,12 @@ class Table: public Furniture {
   
 private:
   
-  string wood;
+  std::string wood;
   
 public:
   
   // constructor
-  Table(string name, string wd);
+  Table(std::string nm, std::string wd);
   
   // destructor
   ~Table();
@@ -34,7 +36,7 @@ public:
    *
    *  Purpose:  print information about the table to stdout
    */
-  void Print();
+  void print();
 };
 
 #endif

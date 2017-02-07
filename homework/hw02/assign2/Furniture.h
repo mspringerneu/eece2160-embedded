@@ -1,6 +1,8 @@
 #ifndef FURNITURE_H
 #define FURNITURE_H
 
+#include <string>
+
 /*
  *  Class Name:  Furniture
  *
@@ -17,12 +19,12 @@ private:
   float width;
   float height;
   float depth;
-  string name;
+  std::string name;
   
 public:
   
   // constructor
-  Furniture(string nm);
+  Furniture(std::string nm);
   
   // destructor
   ~Furniture();

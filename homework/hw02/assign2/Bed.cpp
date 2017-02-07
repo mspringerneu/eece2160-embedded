@@ -1,59 +1,35 @@
-#ifndef BED_H
-#define BED_H
+#include <iostream>
+#include <string>
 
 #include "Bed.h"
+ 
+using namespace std;
+
+// constructor
+Bed::Bed(string nm, string sz) : Furniture(nm) {
+	if ((sz.compare("Twin") == 0) || 
+		(sz.compare("Full") == 0) ||
+		(sz.compare("Queen") == 0) ||
+		(sz.compare("King") == 0)) 
+	{
+		bedSize = sz;
+		Bed::readDimensions();
+	}
+	else {
+		cout << "\t" << "Bed size must be one of: 'Twin', 'Full', 'Queen', or 'King'"
+		<< endl;
+	}
+}
+
+// destructor
+Bed::~Bed() {}
 
 /*
- *  Class Name:  Bed
- *
- *  INHERITED MEMBERS FROM FURNITURE:
- *  @param  width   the width of the furniture
- *  @param  height  the height of the furniture
- *  @param  depth   the depth of the furniture
- *  @param  name    the unique name of the furniture
- *
- *  PRIVATE MEMBERS:
- *  @param  bedSize the size of the bed ("Twin", "Full", "Queen", or "King")
- */
-class Bed: public Furniture {
-  
-private:
-  
-  string bedSize;
-  
-public:
-  
-  // constructor
-  Bed(string name, string sz) : Furniture(name) {
-    switch (sz) {
-      case "Twin":
-        bedSize = sz;
-        break;
-      case "Full":
-        bedSize = sz;
-        break;
-      case "Queen":
-        bedSize = sz;
-        break;
-      case "King":
-        bedSize = sz;
-        break;
-      default:
-        cout << "Bed size must be one of: 'Twin', 'Full', 'Queen', or 'King'"
-        << endl;
-    }
-    read
-  }
-  
-  // destructor
-  ~Bed();
-  
-  /*
-   *  Function: print
-   *
-   *  Purpose:  print information about the bed to stdout
-   */
-  void Print();
-};
-
-#endif
+*  Function: print
+*
+*  Purpose:  print information about the bed to stdout
+*/
+void Bed::print() {
+	Furniture::print();
+	cout <<  "\t" << bedSize << " size" << endl;
+}

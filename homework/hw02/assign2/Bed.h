@@ -1,6 +1,8 @@
 #ifndef BED_H
 #define BED_H
 
+#include <string>
+
 #include "Furniture.h"
 
 /*
@@ -19,12 +21,12 @@ class Bed: public Furniture {
   
 private:
   
-  string bedSize;
+  std::string bedSize;
   
 public:
   
   // constructor
-  Bed(string name, string sz);
+  Bed(std::string nm, std::string sz);
   
   // destructor
   ~Bed();
@@ -34,7 +36,7 @@ public:
    *
    *  Purpose:  print information about the bed to stdout
    */
-  void Print();
+  void print();
 };
 
 #endif

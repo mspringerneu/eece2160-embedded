@@ -3,24 +3,26 @@
 
 #include "Furniture.h"
 
+using namespace std;
+
 // constructor
-Furniture(string nm) {
+Furniture::Furniture(string nm) {
   name = nm;
 }
 
 // destructor
-~Furniture() {}
+Furniture::~Furniture() {}
 
 /*
  *  Function: readDimensions
  *
  *  Purpose:  initialize width, height, and depth from user input
  */
-void readDimensions() {
+void Furniture::readDimensions() {
   float w, h, d;
   bool valid = true;
   while (valid) {
-    cout << "Enter width: ";
+    cout << "\t" << "Enter width: ";
     cin >> w;
     if (w >= 0) {
       width = w;
@@ -31,7 +33,7 @@ void readDimensions() {
       valid = false;
       break;
     }
-    cout << "Enter height: ";
+    cout << "\t" <<  "Enter height: ";
     cin >> h;
     if (h >= 0) {
       height = h;
@@ -42,7 +44,7 @@ void readDimensions() {
       valid = false;
       break;
     }
-    cout << "Enter depth: ";
+    cout << "\t" <<  "Enter depth: ";
     cin >> d;
     if (d >= 0) {
       depth = d;
@@ -53,9 +55,12 @@ void readDimensions() {
       valid = false;
       break;
     }
+    valid = false;
   }
 }
 
-virtual void Print() {
-  
+void Furniture::print() {
+  cout << name << ":" << endl;
+  cout <<  "\t" << "Width = " << width << ", height = " << height << ", depth = " 
+  	<< depth << endl;
 }

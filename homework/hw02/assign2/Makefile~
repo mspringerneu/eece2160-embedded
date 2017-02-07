@@ -1,0 +1,18 @@
+Main: Main.o Furniture.o Table.o Bed.o
+	g++ -o Main Main.o Furniture.o Table.o Bed.o
+
+Main.o: Furniture.h Table.h Bed.h Main.cpp
+	g++ -c Main.cpp
+
+Furniture.o: Furniture.h Furniture.cpp
+	g++ -c Furniture.cpp
+
+Table.o: Furniture.h Table.h Table.cpp
+	g++ -c Table.cpp
+
+Bed.o: Furniture.h Bed.h Bed.cpp
+	g++ -c Bed.cpp
+
+clean:
+	rm *.o
+	rm Main
