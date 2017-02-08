@@ -29,8 +29,6 @@ using namespace std;
  */
 ZedBoard::ZedBoard(){
 	cout << "\nStarting...." << endl;
-	dummyValue = 99;
-	/* // Uncomment this block of code when connected to the Zedboard
 	fd = open( "/dev/mem", O_RDWR);
 	pBase = (char *) mmap(NULL,gpio_size,PROT_READ | PROT_WRITE,
 	        MAP_SHARED,fd,gpio_address);
@@ -40,7 +38,6 @@ ZedBoard::ZedBoard(){
 		cerr << "Mapping I/O memory failed - Did you run with 'sudo'?\n";
 		exit(1); // Returns 1 to the operating system;
 	}
-	*/	
 }
 /**
  * Destructor to close general-purpose I/O.
@@ -51,9 +48,8 @@ ZedBoard::ZedBoard(){
  * @return	None Destructor does not return anything.
  */
 ZedBoard::~ZedBoard(){
-	/* munmap(pBase, gpio_size);
-	close(fd);
-	*/	
+	munmap(pBase, gpio_size);
+	close(fd);	
 	cout << "\nTerminating...." << endl;
 }
 /**
@@ -65,8 +61,7 @@ ZedBoard::~ZedBoard(){
  */
 void ZedBoard::RegisterWrite(int offset, int value)
 {
-	//* (int *) (pBase + offset) = value;
-	dummyValue = value;
+	* (int *) (pBase + offset) = value;
 }
 
 /**
@@ -78,8 +73,7 @@ void ZedBoard::RegisterWrite(int offset, int value)
  */
 int ZedBoard::RegisterRead(int offset)
 {
-	//return * (int *) (pBase + offset);
-	return dummyValue;
+	return * (int *) (pBase + offset);
 }
 
 /**
@@ -92,7 +86,7 @@ int ZedBoard::RegisterRead(int offset)
 void ZedBoard::Write1Led(int ledNum, int state)
 {
 	cout << "\nWriting to LED " << ledNum << ": LED state = " << state << endl;
-	//RegisterWrite(gpio_led1_offset + (ledNum * 4), state);
+	RegisterWrite(gpio_led1_offset + (ledNum * 4), state);
 }
 
 /**
@@ -119,8 +113,7 @@ void ZedBoard::WriteAllLeds(int value)
 int ZedBoard::Read1Switch(int switchNum)
 {
 	cout << "\nReading Switch " << switchNum << endl;
-	//return RegisterRead(gpio_sw1_offset + (switchNum * 4));
-	return switchNum;
+	return RegisterRead(gpio_sw1_offset + (switchNum * 4));
 }
 
 /**

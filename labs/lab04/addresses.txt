@@ -1,0 +1,15 @@
+ZedBoard: 00:02:72:CA:F2:27
+Wiimote:  8C:56:C5:3F:4C:B1
+
+A
+1
+2
+1
+L
+U
+R
+D
++
+-
+H
+B

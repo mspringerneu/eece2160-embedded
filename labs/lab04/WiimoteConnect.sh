@@ -1,5 +1,5 @@
 #!/bin/bash
 # WiimoteConnect.sh
-bluez-simple-agent hci0 XX:XX:XX:XX:XX:XX
-bluez-test-device trusted XX:XX:XX:XX:XX:XX yes
-bluez-test-input connect XX:XX:XX:XX:XX:XX
+bluez-simple-agent hci0 8C:56:C5:3F:4C:B1
+bluez-test-device trusted 8C:56:C5:3F:4C:B1 yes
+bluez-test-input connect 8C:56:C5:3F:4C:B1

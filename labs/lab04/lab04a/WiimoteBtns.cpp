@@ -33,6 +33,7 @@ void WiimoteBtns::Listen() {
 		int value = buffer[12];
 
 		// print them
+        // "value" refers to whether or not the button is depressed (1 if pressed, 0 if up)
 		WiimoteBtns::ButtonEvent(code, value);
 	}
 }

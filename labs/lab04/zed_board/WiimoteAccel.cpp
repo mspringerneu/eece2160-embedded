@@ -37,7 +37,7 @@ void WiimoteAccel::Listen() {
    	short acceleration = * (short *) (buffer + 12);
    
    	// print them
-   	WiimoteAccel::AccelerationEvent(code, acceleration);
+   	this->AccelerationEvent(code, acceleration);
   }
 }
 

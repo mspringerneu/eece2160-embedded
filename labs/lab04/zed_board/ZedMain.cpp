@@ -10,25 +10,56 @@
  */
  
 #include <iostream>
+#include <cmath>
 #include "ZedBoard.h"
+#include "WiimoteAccel.h"
 
 using namespace std;
+
+class WiimoteToLed: public WiimoteAccel {
+
+private:
+
+    ZedBoard * zboard;
+      
+public:
+
+    WiimoteToLed(ZedBoard * zb) {
+        zboard = zb;
+    }
+    
+    ~WiimoteToLed() {
+    	delete zboard;
+    }
+    
+    void AccelerationEvent(int code, short value) {
+        int boundedVal, valIndex, newVal;
+        newVal = value;
+        if (code == 3) {
+        	int * vals = new int[9]{0, 1, 3, 7, 15, 31, 63, 127, 255};
+            boundedVal = abs(max(-100, min(100, newVal)));
+            valIndex = (8 * boundedVal) / 100;
+            cout << "Acceleration value " << boundedVal << " lights up " << valIndex << " LEDs" << endl;
+            zboard->WriteAllLeds(vals[valIndex]);
+            delete [] vals;
+        }
+    }
+};
  
 /**
  * Main operates the Zedboard LEDs and switches
  */
 int main()
 {
-	// Initialize
-	ZedBoard *zed = new ZedBoard();	
-	
-	int value = 0;
-	cout << "Enter a value less than 256: ";
-	cin >> value;
-	cout << "value entered = " << value << endl;
-
-	// Show the value on the Zedboard LEDs
-	zed->WriteAllLeds(value);
-	delete zed;
-	// Done
-} //end main
+    // Instantiate ZedBoard object statically
+    ZedBoard zed_board;
+    // Instantiate WiimoteToLed object statically, passing a pointer to the
+    // recently created ZedBoard object.
+    WiimoteToLed wiimote_to_led(&zed_board);
+    // Enter infinite loop listening to events. The overridden function
+    // WiimoteToLed::AccelerationEvent() will be invoked when the user moves
+    // the Wiimote.
+    wiimote_to_led.Listen();
+    // Unreachable code, previous function has an infinite loop
+    return 0;
+}
