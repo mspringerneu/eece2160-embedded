@@ -1,4 +1,4 @@
-g*
+/*
  *  Project: EECE 2160 Lab #03 Part 3
  *  Author:  Matthew Springer
  *  Date:    February 1, 2017

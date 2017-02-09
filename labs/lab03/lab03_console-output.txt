@@ -1,0 +1,72 @@
+// Assignment #1
+
+user409@localhost:~/lab03$ g++ LedNumber.cpp -o LedNumber
+user409@localhost:~/lab03$ sudo ./LedNumber
+user409@localhost's password:
+Please enter an LED number between 0-7: 5
+Please enter a state for LED #5 (0 or 1): 1
+Please enter a switch number between 0-7: 4
+The value of switch #4 is: 0
+
+Please enter an LED number between 0-7: 2
+Please enter a state for LED #5 (0 or 1): 1
+Please enter a switch number between 0-7: 6
+The value of switch #4 is: 1
+
+Please enter an LED number between 0-7: 3
+Please enter a state for LED #5 (0 or 1): 1
+Please enter a switch number between 0-7: 0
+The value of switch #4 is: 0
+
+user409@localhost:~/lab03$ g++ PushButton.cpp -o PushButton
+user409@localhost:~/lab03$ sudo ./PushButton
+user409@localhost's password:
+The current value of the counter is: 32
+The current value of the counter is: 31
+The current value of the counter is: 30
+The current value of the counter is: 29
+The current value of the counter is: 28
+The current value of the counter is: 14
+The current value of the counter is: 7
+The current value of the counter is: 8
+The current value of the counter is: 9
+The current value of the counter is: 10
+The current value of the counter is: 11
+The current value of the counter is: 12
+The current value of the counter is: 13
+The current value of the counter is: 26
+The current value of the counter is: 52
+The current value of the counter is: 104
+The current value of the counter is: 52
+The current value of the counter is: 26
+The current value of the counter is: 32
+^C
+user409@localhost:~/lab03$ 
+
+user409@localhost:~/lab03$ g++ PushButtonClass.cpp -o PushButtonClass
+user409@localhost:~/lab03$ sudo ./PushButtonClass
+user409@localhost's password:
+The current value of the counter is: 0
+The current value of the counter is: 1
+The current value of the counter is: 2
+The current value of the counter is: 3
+The current value of the counter is: 6
+The current value of the counter is: 12
+The current value of the counter is: 24
+The current value of the counter is: 23
+The current value of the counter is: 22
+The current value of the counter is: 21
+The current value of the counter is: 20
+The current value of the counter is: 10
+The current value of the counter is: 11
+The current value of the counter is: 12
+The current value of the counter is: 0
+^C
+user409@localhost:~/lab03$ 
+
+user409@localhost:~/lab03$ 
+user409@localhost:~/lab03$ 
+user409@localhost:~/lab03$ 
+user409@localhost:~/lab03$ 
+user409@localhost:~/lab03$ 
+
