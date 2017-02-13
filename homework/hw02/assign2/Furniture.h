@@ -1,3 +1,9 @@
+/*
+ *  @file   Furniture.h
+ *  @author Matthew Springer
+ *  @date   February 7, 2016
+ */
+
 #ifndef FURNITURE_H
 #define FURNITURE_H
 

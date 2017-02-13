@@ -1,0 +1,37 @@
+-bash-4.3$ g++ -g person.cpp -o person
+-bash-4.3$ gdb person
+GNU gdb (GDB) Fedora 7.9.1-20.fc22
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from person...done.
+(gdb) break PrintPerson
+Breakpoint 1 at 0x400b33: file person.cpp, line 12.
+(gdb) run
+Starting program: /home/mspring/Documents/course/eece2160git/labs/lab02/person 
+
+Breakpoint 1, PrintPerson (person=0x7fffffffe000) at person.cpp:12
+12	    cout << person->name << " is " << person->age << " years old" << endl;
+(gdb) print person
+$1 = (Person *) 0x7fffffffe000
+(gdb) print *person
+$2 = {name = "John", age = 10}
+(gdb) print person->name
+$3 = "John"
+(gdb) print person->age
+$4 = 10
+(gdb) continue
+Continuing.
+John is 10 years old
+[Inferior 1 (process 59147) exited normally]
+

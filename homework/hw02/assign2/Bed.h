@@ -1,3 +1,9 @@
+/*
+ *  @file   Bed.h
+ *  @author Matthew Springer
+ *  @date   February 7, 2016
+ */
+
 #ifndef BED_H
 #define BED_H
 

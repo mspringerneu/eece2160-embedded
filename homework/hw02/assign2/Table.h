@@ -1,3 +1,9 @@
+/*
+ *  @file   Table.h
+ *  @author Matthew Springer
+ *  @date   February 7, 2016
+ */
+
 #ifndef TABLE_H
 #define TABLE_H
 

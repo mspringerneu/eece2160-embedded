@@ -1,3 +1,10 @@
+/*
+ *  @file   Bed.cpp
+ *  @author Matthew Springer
+ *  @date   February 7, 2016
+ */
+
+
 #include <iostream>
 #include <string>
 
