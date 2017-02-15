@@ -39,18 +39,18 @@ echo out > $FILEPATH/gpio0/direction
 
 **	Makefile compiling	**
 
-bash-4.3$ ls
+user410@localhost:~/lab05/assign2$ ls
 GPIO.cpp  GPIO.h  main.cpp  Makefile
-bash-4.3$ make
+user410@localhost:~/lab05/assign2$ make
 g++ -Wall -c -g main.cpp
 g++ -Wall -c -g GPIO.cpp
 g++ -Wall -g main.o GPIO.o -o main
-bash-4.3$ ls
+user410@localhost:~/lab05/assign2$ ls
 GPIO.cpp  GPIO.h  GPIO.o  main	main.cpp  main.o  Makefile
-bash-4.3$ make clean
+user410@localhost:~/lab05/assign2$ make clean
 rm *.o
 rm main
-bash-4.3$ ls
+user410@localhost:~/lab05/assign2$ ls
 GPIO.cpp  GPIO.h  main.cpp  Makefile
 
 **********************
@@ -61,18 +61,18 @@ GPIO.cpp  GPIO.h  main.cpp  Makefile
 
 **	Makefile compiling	**
 
-bash-4.3$ ls
+user410@localhost:~/lab05/assign3$ ls
 GPIO.cpp  GPIO.h  Makefile  ServoPosition.cpp
-bash-4.3$ make
+user410@localhost:~/lab05/assign3$ make
 g++ -Wall -c -g ServoPosition.cpp
 g++ -Wall -c -g GPIO.cpp
 g++ -Wall -g ServoPosition.o GPIO.o -o ServoPosition
-bash-4.3$ ls
+user410@localhost:~/lab05/assign3$ ls
 GPIO.cpp  GPIO.h  GPIO.o  Makefile  ServoPosition  ServoPosition.cpp  ServoPosition.o
-bash-4.3$ make clean
+user410@localhost:~/lab05/assign3$ make clean
 rm *.o
 rm ServoPosition
-bash-4.3$ ls
+user410@localhost:~/lab05/assign3$ ls
 GPIO.cpp  GPIO.h  Makefile  ServoPosition.cpp
 
 **********************
@@ -83,18 +83,18 @@ GPIO.cpp  GPIO.h  Makefile  ServoPosition.cpp
 
 **	Makefile compiling	**
 
-bash-4.3$ ls
+user410@localhost:~/lab05/assign4$ ls
 GPIO.cpp  GPIO.h  Makefile  ServoSpeed.cpp
-bash-4.3$ make
+user410@localhost:~/lab05/assign4$ make
 g++ -Wall -c -g ServoSpeed.cpp
 g++ -Wall -c -g GPIO.cpp
 g++ -Wall -g ServoSpeed.o GPIO.o -o ServoSpeed
-bash-4.3$ ls
+user410@localhost:~/lab05/assign4$ ls
 GPIO.cpp  GPIO.h  GPIO.o  Makefile  ServoSpeed	ServoSpeed.cpp	ServoSpeed.o
-bash-4.3$ make clean
+user410@localhost:~/lab05/assign4$ make clean
 rm *.o
 rm ServoSpeed
-bash-4.3$ ls
+user410@localhost:~/lab05/assign4$ ls
 GPIO.cpp  GPIO.h  Makefile  ServoSpeed.cpp
 
 **********************

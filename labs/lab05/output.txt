@@ -1,0 +1,331 @@
+user410@localhost:~$ cd lab05/
+user410@localhost:~/lab05$ chmod +x gpio-init.sh
+user410@localhost:~/lab05$ sudo ./gpio-init.sh
+[sudo] password for user410:
+./gpio-init.sh: 1: ./gpio-init.sh: FILEPATH: not found
+./gpio-init.sh: 14: ./gpio-init.sh: cannot create /gpio13/direction: Directory nonexistent
+./gpio-init.sh: 15: ./gpio-init.sh: cannot create /gpio10/direction: Directory nonexistent
+./gpio-init.sh: 16: ./gpio-init.sh: cannot create /gpio11/direction: Directory nonexistent
+./gpio-init.sh: 17: ./gpio-init.sh: cannot create /gpio12/direction: Directory nonexistent
+./gpio-init.sh: 18: ./gpio-init.sh: cannot create /gpio0/direction: Directory nonexistent
+user410@localhost:~/lab05$ sudo ./gpio-init.sh
+[sudo] password for user410:
+./gpio-init.sh: 1: ./gpio-init.sh: FILEPATH: not found
+./gpio-init.sh: 14: ./gpio-init.sh: cannot create /gpio13/direction: Directory nonexistent
+./gpio-init.sh: 15: ./gpio-init.sh: cannot create /gpio10/direction: Directory nonexistent
+./gpio-init.sh: 16: ./gpio-init.sh: cannot create /gpio11/direction: Directory nonexistent
+./gpio-init.sh: 17: ./gpio-init.sh: cannot create /gpio12/direction: Directory nonexistent
+./gpio-init.sh: 18: ./gpio-init.sh: cannot create /gpio0/direction: Directory nonexistent
+user410@localhost:~/lab05$ sudo ./gpio-init.sh
+[sudo] password for user410:
+./gpio-init.sh: 2: ./gpio-init.sh: FILEPATH: not found
+./gpio-init.sh: 15: ./gpio-init.sh: cannot create /gpio13/direction: Directory nonexistent
+./gpio-init.sh: 16: ./gpio-init.sh: cannot create /gpio10/direction: Directory nonexistent
+./gpio-init.sh: 17: ./gpio-init.sh: cannot create /gpio11/direction: Directory nonexistent
+./gpio-init.sh: 18: ./gpio-init.sh: cannot create /gpio12/direction: Directory nonexistent
+./gpio-init.sh: 19: ./gpio-init.sh: cannot create /gpio0/direction: Directory nonexistent
+user410@localhost:~/lab05$ FILE_1 = pwd
+FILE_1: command not found
+user410@localhost:~/lab05$ sudo ./gpio-init.sh
+[sudo] password for user410:
+Sorry, try again.
+[sudo] password for user410:
+user410@localhost:~/lab05$ sudo ./gpio-init.sh
+[sudo] password for user410:
+user410@localhost:~/lab05$ cd assign2/
+user410@localhost:~/lab05/assign2$ make
+g++ -Wall -c -g main.cpp
+g++ -Wall -c -g GPIO.cpp
+g++ -Wall -g main.o GPIO.o -o main
+user410@localhost:~/lab05/assign2$ sudo ./main
+[sudo] password for user410:
+user410@localhost:~/lab05/assign2$ make clean
+rm *.o
+rm main
+user410@localhost:~/lab05/assign2$ cd ../assign3/
+user410@localhost:~/lab05/assign3$ make clean
+rm *.o
+rm ServoPosition
+user410@localhost:~/lab05/assign3$ make
+g++ -Wall -c -g ServoPosition.cpp
+g++ -Wall -c -g GPIO.cpp
+g++ -Wall -g ServoPosition.o GPIO.o -o ServoPosition
+user410@localhost:~/lab05/assign3$ sudo ./ServoPosition
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 3
+You have selected: Elbow
+Please set the rotation angle for the servo (10Â° - 170Â°): 30
+Rotating 'Elbow' to 30 degrees...
+user410@localhost:~/lab05/assign3$ sudo ./ServoPosition
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the rotation angle for the servo (10Â° - 170Â°): 150
+Rotating 'Bicep' to 150 degrees...
+user410@localhost:~/lab05/assign3$ sudo ./ServoPosition
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 1
+You have selected: Base
+Please set the rotation angle for the servo (10Â° - 170Â°): 40
+Rotating 'Base' to 40 degrees...
+user410@localhost:~/lab05/assign3$ sudo ./ServoPosition
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 3
+You have selected: Elbow
+Please set the rotation angle for the servo (10Â° - 170Â°): 60
+Rotating 'Elbow' to 60 degrees...
+user410@localhost:~/lab05/assign3$ sudo ./ServoPosition
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the rotation angle for the servo (10Â° - 170Â°): 130
+Rotating 'Bicep' to 130 degrees...
+user410@localhost:~/lab05/assign3$ cd ../assign4
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g ServoSpeed.cpp
+ServoSpeed.cpp: In function 'int main()':
+ServoSpeed.cpp:181:3: error: 'num_cycles' was not declared in this scope
+ServoSpeed.cpp:158:58: warning: unused variable 'num_periods' [-Wunused-variable]
+make: *** [ServoSpeed.o] Error 1
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g ServoSpeed.cpp
+g++ -Wall -c -g GPIO.cpp
+GPIO.cpp: In function 'void GenerateVariablePWM(int, int, int, int)':
+GPIO.cpp:67:9: error: 'fd' was not declared in this scope
+GPIO.cpp:82:9: error: 'fd' was not declared in this scope
+GPIO.cpp:96:9: error: 'fd' was not declared in this scope
+make: *** [GPIO.o] Error 1
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g GPIO.cpp
+g++ -Wall -g ServoSpeed.o GPIO.o -o ServoSpeed
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 3
+You have selected: Elbow
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 150
+Please enter the rotational speed of the arm (1-10 degrees / sec): 4
+Rotating 'Elbow' from 30 to 150 degrees at 4degrees per second...
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 1
+You have selected: Base
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 150
+Please enter the rotational speed of the arm (1-10 degrees / sec): 6
+Rotating 'Base' from 30 to 150 degrees at 6degrees per second...
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 150
+Please enter the rotational speed of the arm (1-10 degrees / sec): 9
+Rotating 'Bicep' from 30 to 150 degrees at 9degrees per second...
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 150
+Please enter the rotational speed of the arm (1-10 degrees / sec): 12
+The rotational speed you have entered is outside the range [1° - 10°], program terminating...user410@localhost:~/lab05/assign4$ make clean
+rm *.o
+rm ServoSpeed
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g ServoSpeed.cpp
+g++ -Wall -c -g GPIO.cpp
+g++ -Wall -g ServoSpeed.o GPIO.o -o ServoSpeed
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 150
+Please set the final angle for the servo (10° - 170°): 30
+Please enter the rotational speed of the arm (1-30 degrees / sec): 12
+Number of cycles: -500
+Rotating 'Bicep' from 150 to 30 degrees at 12degrees per second...
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g ServoSpeed.cpp
+g++ -Wall -g ServoSpeed.o GPIO.o -o ServoSpeed
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed \
+>
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 150
+Please enter the rotational speed of the arm (1-30 degrees / sec): 12
+First Delay: 900, Last Delay: 2100
+Number of cycles: 500
+Rotating 'Bicep' from 30 to 150 degrees at 12degrees per second...
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g ServoSpeed.cpp
+g++ -Wall -g ServoSpeed.o GPIO.o -o ServoSpeed
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 120
+Please set the final angle for the servo (10° - 170°): 30
+Please enter the rotational speed of the arm (1-30 degrees / sec): 12
+First Delay: 1800, Last Delay: 900
+Number of cycles: 375
+Rotating 'Bicep' from 120 to 30 degrees at 12 degrees per second...
+user410@localhost:~/lab05/assign4$ make
+g++ -Wall -c -g GPIO.cpp
+g++ -Wall -g ServoSpeed.o GPIO.o -o ServoSpeed
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 150
+Please enter the rotational speed of the arm (1-30 degrees / sec): 10
+First Delay: 900, Last Delay: 2100
+Number of cycles: 600
+Rotating 'Bicep' from 30 to 150 degrees at 10 degrees per second...
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 30
+Please set the final angle for the servo (10° - 170°): 90
+Please enter the rotational speed of the arm (1-30 degrees / sec): 6
+First Delay: 900, Last Delay: 1500
+Number of cycles: 500
+Rotating 'Bicep' from 30 to 90 degrees at 6 degrees per second...
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 60
+Please set the final angle for the servo (10° - 170°): 120
+Please enter the rotational speed of the arm (1-30 degrees / sec): 6
+First Delay: 1200, Last Delay: 1800
+Number of cycles: 500
+Rotating 'Bicep' from 60 to 120 degrees at 6 degrees per second...
+user410@localhost:~/lab05/assign4$ sudo ./ServoSpeed
+[sudo] password for user410:
+
+CONTROLLABLE SERVOS
+        1.  Base
+        2.  Bicep
+        3.  Elbow
+        4.  Wrist
+        5.  Gripper
+Please select the servo you would like to control: 2
+You have selected: Bicep
+Please set the starting angle for the servo (10° - 170°): 120
+Please set the final angle for the servo (10° - 170°): 60
+Please enter the rotational speed of the arm (1-30 degrees / sec): 6
+First Delay: 1800, Last Delay: 1200
+Number of cycles: 500
+Rotating 'Bicep' from 120 to 60 degrees at 6 degrees per second...
+user410@localhost:~/lab05/assign4$

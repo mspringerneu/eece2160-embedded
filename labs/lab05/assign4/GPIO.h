@@ -39,5 +39,19 @@ public:
 	* @param num_periods	Number of periods to generate.
 	*/
 	void GeneratePWM(int period, int pulse, int num_periods);
+ 
+ /**
+	* Generate a PWM signal, blocking the caller while the signal is being
+	* generated.
+	*
+	* @param period			  PWM period in microseconds.
+	*
+	* @param first_pulse	Duration of the first pulse in microseconds.
+  *
+  * @param last_pulse	  Duration of the last pulse in microseconds.
+	*
+	* @param num_periods	Number of periods to generate.
+	*/
+	void GenerateVariablePWM(int period, int first_pulse, int last_pulse, int num_periods);
 };
 #endif

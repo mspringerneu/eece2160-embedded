@@ -20,8 +20,8 @@ using namespace std;
  *	5 			Gripper		0
  */
  
-//	Theoretical range: 	[0.6ms, 2.4ms] = [ 0Â°, 180Â°]
-//	Practical range: 	[0.7ms, 2.3ms] = [10Â°, 170Â°]
+//	Theoretical range: 	[0.6ms, 2.4ms] = [ 0°, 180°]
+//	Practical range: 	[0.7ms, 2.3ms] = [10°, 170°]
 
 /*
  *	Return the linux port num of a servo based on a given index
@@ -107,7 +107,7 @@ void printMenu()
 
 /*
  *	Get the number of degrees to rotate the servo from the user
- *		-	rotation angle constrained to Range[10Â° - 170Â°]
+ *		-	rotation angle constrained to Range[10° - 170°]
  *
  *	@func	getRotAng
  *	@return		the number of degrees to rotate the servo
@@ -115,7 +115,7 @@ void printMenu()
 int getRotAng()
 {
 	int rot_ang;
-	cout << "Please set the rotation angle for the servo (10Â° - 170Â°): ";
+	cout << "Please set the rotation angle for the servo (10° - 170°): ";
 	cin >> rot_ang;
 	if (rot_ang >= 10 && rot_ang <= 170)
 	{
@@ -125,7 +125,7 @@ int getRotAng()
 	else
 	{
 		std::cerr << "The angle you have entered is outside the range "
-		<<	"[10Â° - 170Â°], program terminating...";
+		<<	"[10° - 170°], program terminating...";
 		exit(1);
 	}
 }
@@ -141,14 +141,14 @@ int main()
 	
 	//	Open device file corresponding to user selection
 	cout << "You have selected: " << getServoName(servo_select) << endl;
-	//	GPIO gpio(port_num);
+	GPIO gpio(port_num);
 	
 	//	Rotate the servo depending on user input
 	rot_ang = getRotAng();
 	onDelay = degreeToOnDelay(rot_ang);
 	cout << "Rotating '" << getServoName(servo_select) << "' to " << rot_ang
 	<< " degrees..." << endl;
-	//gpio.GeneratePWM(period_len, onDelay, 400);
+	gpio.GeneratePWM(period_len, onDelay, 400);
 	
 	//	Done
 	return 0;

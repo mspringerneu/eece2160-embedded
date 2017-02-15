@@ -39,7 +39,7 @@ GPIO::~GPIO()
 
 void GPIO::GeneratePWM(int period, int pulse, int num_periods)
 {
-	// Generate num_perios of the PWM signal
+	// Generate num_periods of the PWM signal
 	for (int i = 0; i < num_periods; i++)
 	{
 		//	Write ASCII character "1" to raise pin to 1, starting the
@@ -51,5 +51,54 @@ void GPIO::GeneratePWM(int period, int pulse, int num_periods)
 		//	OFF cycle, then wait the rest of the period time.
 		write(fd, "0", 1);
 		usleep(period - pulse);
+	}
+}
+
+void GPIO::GenerateVariablePWM(int period, int first_pulse, int last_pulse, int num_periods)
+{ 
+  int pulse_increment = (last_pulse - first_pulse) / num_periods;
+  int one_sec = 100;
+  
+  // Start position for one second
+  for (int i = 0; i < one_sec; i++)
+	{
+    //	Write ASCII character "1" to raise pin to 1, starting the
+		//	ON cycle, then wait duration of pulse.
+		write(fd, "1", 1);
+		usleep(first_pulse);
+   
+		//	Write ASCII character "0" to lower pin to 0, starting the
+		//	OFF cycle, then wait the rest of the period time.
+		write(fd, "0", 1);
+		usleep(period - first_pulse);
+	}
+ 
+  // Interpolation from first_pulse to last pulse by speed
+	for (int i = 0; i < num_periods; i++)
+	{
+		int currentPulse = first_pulse + (i * pulse_increment);
+    //	Write ASCII character "1" to raise pin to 1, starting the
+		//	ON cycle, then wait duration of pulse.
+		write(fd, "1", 1);
+		usleep(currentPulse);
+		
+		//	Write ASCII character "0" to lower pin to 0, starting the
+		//	OFF cycle, then wait the rest of the period time.
+		write(fd, "0", 1);
+		usleep(period - currentPulse);
+	}
+  
+  // Final position for one second
+  for (int i = 0; i < one_sec; i++)
+	{
+    //	Write ASCII character "1" to raise pin to 1, starting the
+		//	ON cycle, then wait duration of pulse.
+		write(fd, "1", 1);
+		usleep(last_pulse);
+   
+		//	Write ASCII character "0" to lower pin to 0, starting the
+		//	OFF cycle, then wait the rest of the period time.
+		write(fd, "0", 1);
+		usleep(period - last_pulse);
 	}
 }
